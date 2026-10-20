@@ -4,78 +4,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quién Fue? | Spanish Puzzles</title>
+    <meta name="description" content="Solve Spanish language puzzles and investigate a mysterious Colombian treasure theft.">
+    <title>¿Quién Fue? | The Spanish Detective</title>
     <link rel="stylesheet" href="puzzles.css">
     <script src="puzzles.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <p>CASE FILE 04</p>
-        <h1>¿Quién Fue?</h1>
-        <p>Spanish Puzzles — Find the Truth</p>
-    </header>
+<header class="hero">
+    <p class="case-label">CONFIDENTIAL CASE FILE · BOGOTÁ, COLOMBIA</p>
+    <h1>¿Quién Fue?</h1>
+    <p class="subtitle">The Spanish Detective Experience</p>
+    <p class="intro">
+        A priceless treasure has disappeared. Four challenges stand
+        between you and the truth. Read carefully, detective.
+        Cada palabra importa — every word matters.
+    </p>
+    <div class="hero-stats">
+        <span>4 Challenges</span>
+        <span>25+ Spanish Words</span>
+        <span id="top-score">Score: 0 / 100</span>
+    </div>
+</header>
 
-    <main>
-        <section>
-            <h2>Your Mission</h2>
-            <p>
-                A priceless cultural treasure has disappeared.
-                Solve the Spanish clues, test your vocabulary,
-                and help uncover the truth.
-            </p>
-        </section>
+<nav class="nav-bar" aria-label="Puzzle navigation">
+    <a href="#mission">Mission</a>
+    <a href="#puzzle1">Decode</a>
+    <a href="#puzzle2">Vocabulary</a>
+    <a href="#puzzle3">Cipher</a>
+    <a href="#puzzle4">Culture</a>
+    <a href="#reflection">Reflection</a>
+</nav>
 
-        <section class="puzzle-card">
-            <p>CHALLENGE 01</p>
-            <h2>Decode the Secret Message</h2>
+<main>
+    <section id="mission" class="panel">
+        <p class="eyebrow">YOUR MISSION</p>
+        <h2>Become the detective</h2>
+        <p>
+            During a cultural exhibition in Bogotá, Colombia, a valuable
+            golden artefact vanished. The investigation has uncovered
+            strange messages, suspicious movements, and conflicting
+            testimonies.
+        </p>
+        <p>
+            Complete the four Spanish challenges to earn up to
+            <strong>100 points</strong>. Use hints when necessary,
+            learn the meaning of each clue, and keep track of your score.
+        </p>
+        <div class="mission-note">
+            <strong>Detective's rule:</strong>
+            No guessing blindly. Understand the Spanish before you decide.
+        </div>
+    </section>
 
-            <blockquote>
-                "No busques donde brillaba;
-                busca donde se conserva."
-            </blockquote>
+    <section id="puzzle1" class="panel puzzle-card">
+        <p class="eyebrow">CHALLENGE 01 · 20 POINTS</p>
+        <h2>Decode the Secret Message</h2>
+        <p class="story">
+            A folded note was discovered near the exhibition room.
+            It contains a warning written in Spanish.
+        </p>
 
-            <p>What does the message mean in English?</p>
+        <blockquote lang="es">
+            "No busques donde brillaba;
+            busca donde se conserva."
+        </blockquote>
 
-            <form id="cipher-form">
-                <label for="cipher-answer">Choose your answer:</label>
+        <p class="translation-prompt">
+            What does the message mean in English?
+        </p>
 
-                <select id="cipher-answer" required>
-                    <option value="">Select an answer</option>
-                    <option value="wrong1">
-                        Look where everyone is dancing.
-                    </option>
-                    <option value="correct">
-                        Don't look where it shone;
-                        look where it is preserved.
-                    </option>
-                    <option value="wrong2">
-                        The treasure was sold yesterday.
-                    </option>
+        <form id="cipher-form">
+            <label for="cipher-answer">Choose your translation</label>
+            <select id="cipher-answer" required>
+                <option value="">Select an answer...</option>
+                <option value="wrong1">Look where everyone is dancing.</option>
+                <option value="correct">Don't look where it shone; look where it is preserved.</option>
+                <option value="wrong2">The treasure was sold yesterday.</option>
+            </select>
+            <button type="submit">Submit Translation</button>
+        </form>
+
+        <button class="secondary-button" id="hint-button" type="button">
+            Reveal Hint
+        </button>
+        <p id="hint-text" class="hint-box" hidden>
+            "Brillaba" means "it shone". "Busca" means "look for".
+            "Se conserva" means "is preserved".
+        </p>
+        <p id="cipher-feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="puzzle2" class="panel puzzle-card">
+        <p class="eyebrow">CHALLENGE 02 · 30 POINTS</p>
+        <h2>Detective Vocabulary</h2>
+        <p>
+            A detective must understand the language of an investigation.
+            Match each Spanish word to its English meaning.
+        </p>
+
+        <form id="vocabulary-form">
+            <div id="vocabulary-questions" class="question-list"></div>
+            <button type="submit">Check Vocabulary</button>
+        </form>
+
+        <button class="secondary-button" id="vocab-hint-button" type="button">
+            Need a Hint?
+        </button>
+        <p id="vocab-hint" class="hint-box" hidden>
+            A "huella" is a mark left behind. An "alibi" explains
+            where a suspect claims to have been.
+        </p>
+        <p id="vocab-feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="puzzle3" class="panel puzzle-card">
+        <p class="eyebrow">CHALLENGE 03 · 25 POINTS</p>
+        <h2>Crack the Secret Cipher</h2>
+        <p class="story">
+            The next note was encrypted. Each letter in the message
+            has been moved one place forward in the alphabet.
+            Move each letter one place backward to reveal the word.
+        </p>
+
+        <div class="cipher-display" aria-label="Encrypted word">
+            E V J D B
+        </div>
+
+        <p class="muted">
+            Example: B becomes A, D becomes C.
+            The alphabet wraps around, so A becomes Z.
+        </p>
+
+        <form id="code-form">
+            <label for="code-answer">Enter the decoded Spanish word</label>
+            <input id="code-answer" type="text" placeholder="Your answer..." autocomplete="off" required>
+            <button type="submit">Unlock the Clue</button>
+        </form>
+
+        <button class="secondary-button" id="code-hint-button" type="button">
+            Reveal Hint
+        </button>
+        <p id="code-hint" class="hint-box" hidden>
+            The answer is a Spanish word meaning "cabin" or "hut".
+            Shift each letter back by one.
+        </p>
+        <p id="code-feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="puzzle4" class="panel puzzle-card">
+        <p class="eyebrow">CHALLENGE 04 · 25 POINTS</p>
+        <h2>Explore Colombian Culture</h2>
+        <p>
+            The artefact's history leads us to Colombia's rich cultural
+            heritage. Answer these questions to complete your investigation.
+        </p>
+
+        <form id="culture-form">
+            <div class="quiz-question">
+                <label for="culture1">
+                    1. What is the official language of Colombia?
+                </label>
+                <select id="culture1" required>
+                    <option value="">Choose...</option>
+                    <option value="portuguese">Portuguese</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
                 </select>
+            </div>
 
-                <button type="submit">Check Answer</button>
-            </form>
+            <div class="quiz-question">
+                <label for="culture2">
+                    2. Which museum in Bogotá is famous for its collection
+                    of pre-Hispanic gold artefacts?
+                </label>
+                <select id="culture2" required>
+                    <option value="">Choose...</option>
+                    <option value="gold">Museo del Oro</option>
+                    <option value="louvre">The Louvre</option>
+                    <option value="prado">Museo del Prado</option>
+                </select>
+            </div>
 
-            <p id="cipher-feedback" aria-live="polite"></p>
+            <div class="quiz-question">
+                <label for="culture3">
+                    3. Which Indigenous culture is strongly associated
+                    with the legend of El Dorado around Lake Guatavita?
+                </label>
+                <select id="culture3" required>
+                    <option value="">Choose...</option>
+                    <option value="maya">Maya</option>
+                    <option value="muisca">Muisca</option>
+                    <option value="inca">Inca</option>
+                </select>
+            </div>
 
-            <button id="hint-button" type="button">
-                Reveal Hint
-            </button>
+            <div class="quiz-question">
+                <label for="culture4">
+                    4. What does "el patrimonio cultural" mean?
+                </label>
+                <select id="culture4" required>
+                    <option value="">Choose...</option>
+                    <option value="food">Traditional food only</option>
+                    <option value="heritage">Cultural heritage</option>
+                    <option value="weather">The weather</option>
+                </select>
+            </div>
 
-            <p id="hint-text" hidden>
-                "Brillaba" means "shone".
-                "Se conserva" means "is preserved".
-            </p>
+            <div class="quiz-question">
+                <label for="culture5">
+                    5. What does "la pieza de oro" mean?
+                </label>
+                <select id="culture5" required>
+                    <option value="">Choose...</option>
+                    <option value="goldpiece">The gold object</option>
+                    <option value="goldenhour">The golden hour</option>
+                    <option value="goldenbook">The golden book</option>
+                </select>
+            </div>
 
-            <p id="score">Score: 0</p>
-        </section>
-    </main>
+            <button type="submit">Submit Culture Quiz</button>
+        </form>
 
-    <footer>
-        <p>Created by: Abishek.K.P</p>
-        <p>Learning Spanish, one clue at a time.</p>
-    </footer>
+        <button class="secondary-button" id="culture-hint-button" type="button">
+            Reveal Hint
+        </button>
+        <p id="culture-hint" class="hint-box" hidden>
+            The Museo del Oro is in Bogotá. The Muisca are associated
+            with the El Dorado tradition. Spanish is Colombia's official
+            language.
+        </p>
+        <p id="culture-feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="results" class="panel results-panel">
+        <p class="eyebrow">CASE PROGRESS</p>
+        <h2>Your Investigation Score</h2>
+
+        <div class="score-number" id="final-score" aria-live="polite">
+            0 / 100
+        </div>
+
+        <div class="progress-track" role="progressbar"
+             aria-label="Investigation progress" aria-valuemin="0"
+             aria-valuemax="100" aria-valuenow="0" id="score-progress">
+            <div id="progress-fill"></div>
+        </div>
+
+        <p id="result-message">
+            Solve the challenges to reveal your detective rating.
+        </p>
+
+        <button id="replay-button" type="button">Play Again</button>
+    </section>
+
+    <section id="reflection" class="panel">
+        <p class="eyebrow">CREATOR'S NOTE</p>
+        <h2>My Learning Reflection</h2>
+        <p>
+            <strong>Created by:</strong> Abishek.K.P
+        </p>
+        <p>
+            Through this Spanish puzzle project, I learned how vocabulary
+            and translation can be used to solve problems in an interactive
+            story. I also explored Colombian cultural heritage and learned
+            how language can make learning history more engaging.
+        </p>
+        <p class="muted">
+            Edit this paragraph in your own words to describe what you
+            personally learned and felt while developing the project.
+        </p>
+    </section>
+
+    <section class="sources panel">
+        <h2>Research Sources</h2>
+        <p>
+            Learn more about Colombian cultural heritage using these
+            museum and reference resources.
+        </p>
+        <ul>
+            <li>
+                <a href="https://www.banrepcultural.org/bogota/museo-del-oro"
+                   target="_blank" rel="noopener noreferrer">
+                    Banco de la República — Museo del Oro
+                </a>
+            </li>
+            <li>
+                <a href="https://ich.unesco.org/"
+                   target="_blank" rel="noopener noreferrer">
+                    UNESCO — Intangible Cultural Heritage
+                </a>
+            </li>
+        </ul>
+        <p class="muted">
+            The theft and the case clues are fictional. The cultural
+            questions are educational.
+        </p>
+    </section>
+</main>
+
+<footer>
+    <p>¿Quién Fue? — Una palabra puede revelar la verdad.</p>
+    <p>One word can reveal the truth.</p>
+</footer>
 
 </body>
 </html>
