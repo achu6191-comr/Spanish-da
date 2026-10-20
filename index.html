@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quién Fue? | Spanish Puzzles</title>
+    <link rel="stylesheet" href="puzzles.css">
+    <script src="puzzles.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <p>CASE FILE 04</p>
+        <h1>¿Quién Fue?</h1>
+        <p>Spanish Puzzles — Find the Truth</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Your Mission</h2>
+            <p>
+                A priceless cultural treasure has disappeared.
+                Solve the Spanish clues, test your vocabulary,
+                and help uncover the truth.
+            </p>
+        </section>
+
+        <section class="puzzle-card">
+            <p>CHALLENGE 01</p>
+            <h2>Decode the Secret Message</h2>
+
+            <blockquote>
+                "No busques donde brillaba;
+                busca donde se conserva."
+            </blockquote>
+
+            <p>What does the message mean in English?</p>
+
+            <form id="cipher-form">
+                <label for="cipher-answer">Choose your answer:</label>
+
+                <select id="cipher-answer" required>
+                    <option value="">Select an answer</option>
+                    <option value="wrong1">
+                        Look where everyone is dancing.
+                    </option>
+                    <option value="correct">
+                        Don't look where it shone;
+                        look where it is preserved.
+                    </option>
+                    <option value="wrong2">
+                        The treasure was sold yesterday.
+                    </option>
+                </select>
+
+                <button type="submit">Check Answer</button>
+            </form>
+
+            <p id="cipher-feedback" aria-live="polite"></p>
+
+            <button id="hint-button" type="button">
+                Reveal Hint
+            </button>
+
+            <p id="hint-text" hidden>
+                "Brillaba" means "shone".
+                "Se conserva" means "is preserved".
+            </p>
+
+            <p id="score">Score: 0</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by: Abishek.K.P</p>
+        <p>Learning Spanish, one clue at a time.</p>
+    </footer>
+
+</body>
+</html>
